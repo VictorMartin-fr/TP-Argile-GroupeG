@@ -31,3 +31,12 @@ def get_total_price(price, quantity):
 def print_price(price):
     # On affiche le prix de l'article
     print("Le prix de l'article est de", price, "euros")
+
+def print_vat_codes(cursor):
+    # On récupère les codes TVA enregistrés en base de données
+    cursor.execute("SELECT * FROM vat_codes")
+    codes = cursor.fetchall()
+    
+    # On parcourt les codes TVA récupérés et on les affiche à l'écran
+    for code in codes:
+        print("Code TVA :", code[0], "| Taux :", code[1])
