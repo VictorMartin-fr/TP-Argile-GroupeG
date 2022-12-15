@@ -7,6 +7,7 @@ from main import HelloWorld
 from main import get_total_price
 from main import print_price
 from main import print_vat_codes
+from main import calculate_price_ttc
 
 class test(unittest.TestCase):
     def test_hello_world(self):
@@ -60,6 +61,7 @@ class test(unittest.TestCase):
         
         # On rétablit la sortie standard
         sys.stdout = old_stdout
+
     def test_print_vat_codes(self):
         # On crée un objet Mock pour simuler un curseur de base de données
         cursor = Mock()
@@ -109,6 +111,16 @@ class test(unittest.TestCase):
         
         # On rétablit la sortie standard
         sys.stdout = old_stdout
+
+    def test_calculate_price_ttc(self):
+        # Test avec un taux de TVA de 20% et un prix HT de 100 euros
+        self.assertEqual(calculate_price_ttc(20, 100), 120)
+
+        # Test avec un taux de TVA de 10% et un prix HT de 50 euros
+        self.assertEqual(calculate_price_ttc(10, 50), 55)
+
+        # Test avec un taux de TVA de 5.5% et un prix HT de 200 euros
+        self.assertEqual(calculate_price_ttc(5.5, 200), 211)
 
 if __name__ == "__main__":
     unittest.main()

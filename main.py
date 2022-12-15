@@ -40,3 +40,11 @@ def print_vat_codes(cursor):
     # On parcourt les codes TVA récupérés et on les affiche à l'écran
     for code in codes:
         print("Code TVA :", code[0], "| Taux :", code[1])
+    
+def get_vat_code():
+    vat_code = input('Saisissez votre code TVA : ')
+    return vat_code
+
+def calculate_price_ttc(vat_rate, price_ht):
+    price_ttc = price_ht * (1 + vat_rate / 100)
+    return price_ttc
