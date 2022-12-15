@@ -27,3 +27,7 @@ def get_total_price(price, quantity):
     
     # On retourne le prix total
     return total_price
+
+def print_price(price):
+    # On affiche le prix de l'article
+    print("Le prix de l'article est de", price, "euros")
